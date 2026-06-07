@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Krypton Physical Crypto Card</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo">KRY<span>PTON</span></div>
+
+  <div class="auth-buttons">
+    <button onclick="openAuth('login')">Login</button>
+    <button onclick="openAuth('signup')">Sign In</button>
+  </div>
+
+  <a href="index.html" class="secondary-btn">Home</a>
+</header>
+
+<section class="info page-space physical-page">
+  <p class="tag">Premium Physical Crypto Card</p>
+
+  <h1 class="coming">COMING SOON</h1>
+
+  <p>
+    The Krypton Physical Crypto Credit Card is a premium upcoming product for
+    users who want a real-world crypto card experience with a professional,
+    stylish and futuristic metallic black design.
+  </p>
+
+  <button class="connect-wallet" onclick="connectWallet()">Connect Wallet</button>
+
+  <div class="boxes">
+    <div class="box">
+      <h3>Booking Price</h3>
+      <p>$60 each physical card.</p>
+    </div>
+
+    <div class="box">
+      <h3>Premium Design</h3>
+      <p>Metallic black card concept with modern crypto branding.</p>
+    </div>
+
+    <div class="box">
+      <h3>Advance Access</h3>
+      <p>Early booking gives users priority access when the card launches.</p>
+    </div>
+  </div>
+</section>
+
+<section class="interactive-section">
+  <h2>Why Book Early?</h2>
+
+  <div class="feature-row">
+    <div class="feature-card">
+      <h3>01</h3>
+      <h4>Priority Access</h4>
+      <p>Early users will receive priority during the official Krypton launch.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>02</h3>
+      <h4>Premium Card</h4>
+      <p>A luxury metallic black physical card concept for crypto users.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>03</h3>
+      <h4>Exclusive Benefits</h4>
+      <p>Special early-supporter benefits are planned for advance bookings.</p>
+    </div>
+  </div>
+</section>
+
+<section class="steps-section">
+  <h2>Booking Process</h2>
+
+  <div class="timeline">
+    <div class="step">
+      <span>1</span>
+      <p>Connect your wallet.</p>
+    </div>
+
+    <div class="step">
+      <span>2</span>
+      <p>Complete advance booking.</p>
+    </div>
+
+    <div class="step">
+      <span>3</span>
+      <p>Receive confirmation email.</p>
+    </div>
+
+    <div class="step">
+      <span>4</span>
+      <p>Wait for official launch updates.</p>
+    </div>
+  </div>
+</section>
+
+<section class="stats-section">
+  <h2>Krypton Physical Network</h2>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <h3>Premium</h3>
+      <p>Card Build</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>Early</h3>
+      <p>Launch Access</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>Global</h3>
+      <p>Crypto Community</p>
+    </div>
+
+    <div class="stat-box">
+      <h3>Secure</h3>
+      <p>Booking Flow</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <h2>Physical Card FAQ</h2>
+
+  <details>
+    <summary>What is the booking price?</summary>
+    <p>The advance booking price is $60.</p>
+  </details>
+
+  <details>
+    <summary>Is the card available now?</summary>
+    <p>No. The physical crypto card is currently marked as Coming Soon.</p>
+  </details>
+
+  <details>
+    <summary>Why should I book early?</summary>
+    <p>Early supporters may receive launch priority and special future benefits.</p>
+  </details>
+
+  <details>
+    <summary>Will I receive confirmation?</summary>
+    <p>Yes. A confirmation flow is planned for each successful advance booking.</p>
+  </details>
+</section>
+
+<section class="purchase-section">
+  <div class="purchase-card">
+    <h3>Physical Crypto Card</h3>
+    <p>Advance booking price: <b>$60</b></p>
+
+    <input
+      type="email"
+      placeholder="Enter your email address"
+      class="purchase-input"
+    />
+
+    <button onclick="payPhysicalCard()">Advance Booking</button>
+  </div>
+</section>
+
+<footer>
+  <h3>KRYPTON PHYSICAL</h3>
+  <p>Premium physical crypto card launching soon.</p>
+</footer>
+
+<div class="auth-modal" id="authModal">
+  <div class="auth-box">
+    <span class="close" onclick="closeAuth()">×</span>
+    <h2 id="authTitle">Login</h2>
+
+    <input type="text" id="authName" placeholder="Full Name" />
+    <input type="email" id="authEmail" placeholder="Email Address" />
+    <input type="password" id="authPassword" placeholder="Password" />
+
+    <button onclick="submitAuth()">Continue</button>
+    <p id="authMessage"></p>
+  </div>
+</div>
+
+<script src="wallet.js"></script>
+
+<script>
+  let authMode = "login";
+
+  function openAuth(mode) {
+    authMode = mode;
+    document.getElementById("authModal").style.display = "flex";
+
+    document.getElementById("authTitle").innerText =
+      mode === "login" ? "Login to Krypton" : "Create Krypton Account";
+
+    document.getElementById("authName").style.display =
+      mode === "login" ? "none" : "block";
+
+    document.getElementById("authMessage").innerText = "";
+  }
+
+  function closeAuth() {
+    document.getElementById("authModal").style.display = "none";
+  }
+
+  function submitAuth() {
+    const name = document.getElementById("authName").value;
+    const email = document.getElementById("authEmail").value;
+    const password = document.getElementById("authPassword").value;
+    const msg = document.getElementById("authMessage");
+
+    if (!email || !password) {
+      msg.innerText = "Please enter email and password.";
+      return;
+    }
+
+    if (authMode === "signup") {
+      localStorage.setItem("kryptonUser", JSON.stringify({
+        name: name,
+        email: email,
+        password: password
+      }));
+
+      msg.innerText = "Account created successfully.";
+    } else {
+      const user = JSON.parse(localStorage.getItem("kryptonUser"));
+
+      if (user && user.email === email && user.password === password) {
+        msg.innerText = "Login successful. Welcome to Krypton.";
+      } else {
+        msg.innerText = "Invalid email or password.";
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
